@@ -21,7 +21,7 @@ import Queue from '../lib/Queue';
 export default {
     key: 'ImportExcel',
     options: {
-        timeout: 60000
+        timeout: 240000
             //delay: 5000,
             // attemps: 3,
             //  priority: 3,

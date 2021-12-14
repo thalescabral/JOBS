@@ -9,7 +9,7 @@ export default {
     key: 'FindTransportationFC',
     options: {
         attempts: 3,
-        repeat: { cron: '0 40 13 ? * MON-FRI' },
+        repeat: { cron: '0 30 13 ? * MON-FRI' },
         timeout: 220000
     },
     async handle({ data }) {

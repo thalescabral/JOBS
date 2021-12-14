@@ -5,6 +5,8 @@ import ImportExcelController from './controllers/ImportExcelController';
 import ExportExcelController from './controllers/ExportExcelController';
 import FindTransportationController from './controllers/FindTransportationController';
 import FindTransportationFCController from './controllers/FindTransportationFCController';
+import ColetaTransportadoraController from './controllers/ColetaTransportadoraController';
+import ReenvioNotfisController from './controllers/ReenvioNotfisController';
 import BullBoard from 'bull-board';
 import Queue from './lib/Queue';
 import bodyParser from 'body-parser';
@@ -34,6 +36,10 @@ app.post('/FindTransportation', FindTransportationController.findtransportationT
 
 app.post('/FindTransportationFC', FindTransportationFCController.findtransportationTMSFC);
 
+app.post('/ColetaTransportadora', ColetaTransportadoraController.coletaTransportadoraTMS);
+
+app.post('/ReenvioNotfis', ReenvioNotfisController.reenvioNotfisTMS);
+
 app.use('/admin/queues', BullBoard.UI);
 
 app.listen(8080, () => {
@@ -54,3 +60,13 @@ const findtransportationTMSFC = {
     excel: ""
 }
 Queue.add('FindTransportationFC', { findtransportationTMSFC });
+
+const coletaTransportadora = {
+    cnpj: ""
+}
+Queue.add('ColetaTransportadora', { coletaTransportadora });
+
+const reenvioNotfis = {
+    pedido: ""
+}
+Queue.add('ReenvioNotfis', { reenvioNotfis });
